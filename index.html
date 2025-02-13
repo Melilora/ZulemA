@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Términos y Condiciones</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <div class="container text-center mt-5" id="contenedor-principal">
+    <h1 class="display-4">Términos y Condiciones</h1>
+    <div class="terminos mt-4">
+      <p>Por favor, lee atentamente los siguientes términos y condiciones:</p>
+      <ul class="list-unstyled">
+        <li>✅ No me hago responsable de lo que llegue a suceder.</li>
+        <li>✅ Esta información no será usada en tu contra.</li>
+        <li>✅ Tendrás que darle un beso al programador. 😘</li>
+        <li>✅ Deberás darle un abrazo al desarrollador. 🤗</li>
+        <li>✅ Prometes sonreír cada día. 😊</li>
+      </ul>
+      <div class="form-check mt-4">
+        <input class="form-check-input" type="radio" name="terminos" id="aceptar">
+        <label class="form-check-label" for="aceptar">
+          Acepto los términos y condiciones
+        </label>
+      </div>
+    </div>
+    <div class="mt-4">
+      <button id="btnSiguiente" class="btn btn-primary btn-lg me-3" disabled>Siguiente</button>
+      <button id="btnCancelar" class="btn btn-danger btn-lg">Cancelar</button>
+    </div>
+
+    <!-- Botones de redes sociales -->
+    <div class="redes-sociales mt-5">
+      <a href="https://www.facebook.com/melilora25/" target="_blank" class="btn btn-social btn-facebook">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="https://x.com/MeliloraTTV" target="_blank" class="btn btn-social btn-twitter">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="https://www.instagram.com/melilora/" target="_blank" class="btn btn-social btn-instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://api.whatsapp.com/send/?phone=6682355357&text&type=phone_number&app_absent=0" target="_blank" class="btn btn-social btn-whatsapp">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const btnSiguiente = document.getElementById('btnSiguiente');
+    const btnCancelar = document.getElementById('btnCancelar');
+    const radioAceptar = document.getElementById('aceptar');
+
+    // Habilitar el botón "Siguiente" si se aceptan los términos
+    radioAceptar.addEventListener('change', () => {
+      if (radioAceptar.checked) {
+        btnSiguiente.disabled = false;
+      } else {
+        btnSiguiente.disabled = true;
+      }
+    });
+
+    // Botón "Siguiente"
+    btnSiguiente.addEventListener('click', () => {
+      if (radioAceptar.checked) {
+        window.location.href = "zulema.html";
+      } else {
+        alert("¡Tienes que aceptar los términos o explotaré de tristeza! 😭");
+      }
+    });
+
+    // Botón "Cancelar" (se mueve infinitamente)
+    btnCancelar.addEventListener('mouseover', () => {
+      moverBoton();
+    });
+
+    // Función para mover el botón "Cancelar"
+    function moverBoton() {
+      const x = Math.random() * (window.innerWidth - btnCancelar.offsetWidth);
+      const y = Math.random() * (window.innerHeight - btnCancelar.offsetHeight);
+      btnCancelar.style.position = "absolute";
+      btnCancelar.style.left = `${x}px`;
+      btnCancelar.style.top = `${y}px`;
+    }
+  </script>
+</body>
+</html>

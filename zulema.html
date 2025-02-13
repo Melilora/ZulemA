@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¿Serás mi San Valentín?</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="zulema.css">
+</head>
+<body>
+  <div class="container text-center mt-5" id="contenedor-principal">
+    <h1 class="display-4">¿Aceptarías ser mi San Valentín este 14 de febrero?</h1>
+    <!-- Video de Zulema -->
+    <video class="video-zulema mt-3" autoplay loop muted playsinline>
+      <source src="zulema.mp4" type="video/mp4">
+      Tu navegador no soporta videos.
+    </video>
+    <div class="mt-4">
+      <button id="btnSi" class="btn btn-success btn-lg me-3">Sí</button>
+      <button id="btnNo" class="btn btn-danger btn-lg">No</button>
+    </div>
+  </div>
+
+  <!-- Contenedor para el fondo romántico (oculto inicialmente) -->
+  <div id="fondo-romantico" class="fondo-romantico">
+    <div class="corazones"></div>
+    <iframe 
+      id="video-fondo" 
+      src="https://www.youtube.com/embed/lQHj7u-SwB0?autoplay=1&mute=1&controls=0&loop=1&playlist=lQHj7u-SwB0" 
+      frameborder="0" 
+      allow="autoplay; encrypted-media" 
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <!-- Audio para la música de fondo (oculto) -->
+  <audio id="musica" autoplay loop>
+    <source src="anhelo.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio.
+  </audio>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    let contadorNo = 0;
+
+    // Botón "Sí"
+    document.getElementById('btnSi').addEventListener('click', () => {
+      // Oculta el contenedor principal
+      document.getElementById('contenedor-principal').style.display = 'none';
+
+      // Muestra el fondo romántico
+      document.getElementById('fondo-romantico').style.display = 'block';
+
+      // Reproduce la música
+      document.getElementById('musica').play();
+
+      // Inicia la animación de corazones
+      crearCorazones();
+    });
+
+    // Botón "No" (se mueve infinitamente)
+    const btnNo = document.getElementById('btnNo');
+    btnNo.addEventListener('mouseover', () => {
+      moverBoton();
+    });
+
+    // Función para mover el botón "No"
+    function moverBoton() {
+      const x = Math.random() * (window.innerWidth - btnNo.offsetWidth);
+      const y = Math.random() * (window.innerHeight - btnNo.offsetHeight);
+      btnNo.style.position = "absolute";
+      btnNo.style.left = `${x}px`;
+      btnNo.style.top = `${y}px`;
+    }
+
+    // Función para crear corazones flotantes
+    function crearCorazones() {
+      const contenedorCorazones = document.querySelector('.corazones');
+      for (let i = 0; i < 50; i++) {
+        const corazon = document.createElement('div');
+        corazon.classList.add('corazon');
+        corazon.style.left = Math.random() * 100 + 'vw';
+        corazon.style.animationDuration = Math.random() * 3 + 2 + 's';
+        contenedorCorazones.appendChild(corazon);
+      }
+    }
+  </script>
+</body>
+</html>
